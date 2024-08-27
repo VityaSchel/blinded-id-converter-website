@@ -4,7 +4,6 @@
 /* eslint-disable prefer-const */
 
 import sodium from 'libsodium-wrappers-sumo'
-await sodium.ready
 
 function gf(init?: number[]) {
   let i, r = new Float64Array(16)
