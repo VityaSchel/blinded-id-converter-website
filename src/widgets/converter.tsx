@@ -1,5 +1,5 @@
 import React from 'react'
-import { ServerPubkeyInput } from "@/features/server-pubkey-input"
+import { ServerPubkeyInput } from '@/features/server-pubkey-input'
 import { Textarea } from '@/shared/shadcn/ui/textarea'
 import { blindedToSessionId, sessionToBlindedId } from '@/shared/convert'
 import cx from 'classnames'
@@ -24,8 +24,8 @@ export function Converter() {
       <ServerPubkeyInput 
         value={pubkey}
         onChange={pubkey => {
-          let _sessionId = sessionId
-          let _blindedId1 = blindedId1
+          const _sessionId = sessionId
+          const _blindedId1 = blindedId1
           if (_sessionId.length > 0 && _blindedId1.length > 0) {
             setSessionId('')
             setBlindedId1('')
@@ -38,7 +38,7 @@ export function Converter() {
             const error = !/[a-f0-9]{64}$/.test(pubkey)
             setPubkeyError(error)
             if(!error) {
-              let serverPk = pubkey.match(/([0-9a-f]{64})$/)?.[1]
+              const serverPk = pubkey.match(/([0-9a-f]{64})$/)?.[1]
               if (_sessionId.length > 0) {
                 if (serverPk)
                   setBlindedId1(sessionToBlindedId(serverPk, sessionId)[0])
@@ -63,7 +63,7 @@ export function Converter() {
             })}
             onChange={e => {
               setSessionIdError(false)
-              let sessionId = e.target.value.toLowerCase().replaceAll(/[^0-9a-f]|\n/g, '')
+              const sessionId = e.target.value.toLowerCase().replaceAll(/[^0-9a-f]|\n/g, '')
               setSessionId(sessionId)
               if(pubkey.length === 0 && sessionId.length === 66) {
                 setPubkeyMissingExplicitError(true)
@@ -104,7 +104,7 @@ export function Converter() {
             })}
             onChange={e => {
               setBlindedId1Error(false)
-              let blindedId = e.target.value.toLowerCase().replaceAll(/[^0-9a-f]|\n/g, '')
+              const blindedId = e.target.value.toLowerCase().replaceAll(/[^0-9a-f]|\n/g, '')
               setBlindedId1(blindedId)
               if(pubkey.length === 0 && blindedId.length === 66) {
                 setPubkeyMissingExplicitError(true)
