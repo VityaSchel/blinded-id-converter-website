@@ -2,15 +2,18 @@ import '@/shared/styles/global.css'
 import React, { StrictMode, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import { HomePage } from '@/pages/index'
+import sodium from 'libsodium-wrappers-sumo'
 
-const SodiumLoader = React.lazy(async () => {
-  const sodium = await import('libsodium-wrappers-sumo')
-  await sodium.ready
+function SodiumLoader({ children }: React.PropsWithChildren) {
+  const [sodiumLoaded, setSodiumLoaded] = React.useState(false)
 
-  return {
-    default: ({ children }: React.PropsWithChildren) => children
-  }
-})
+  React.useEffect(() => {
+    sodium.ready
+      .then(() => setSodiumLoaded(true))
+  }, [])
+
+  return sodiumLoaded ? children : null
+}
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
