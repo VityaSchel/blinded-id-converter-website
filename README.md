@@ -4,7 +4,7 @@ This website lets you easily convert Session ID (prefix 05) to SOGS blinded Sess
 
 ![telegram-cloud-photo-size-2-5366592289989844090-y](https://github.com/user-attachments/assets/c9c8eee7-8726-4fdf-b87a-3cbc07140796)
 
-[Visit website](https://session-blinded-id.pages.dev)
+[Visit website](https://blinding.sessionbots.directory/)
 
 ## Shouldn't blinded IDs be unrevertable?
 
